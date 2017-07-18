@@ -1,0 +1,27 @@
+To run the app, follow these instructions:
+
+Running json server to host Products REST api
+---------------------------------------------
+1. Open a command window
+2. Change directory to "ng-2017-07-15\apps\db"
+3. Run command: json-server --watch store-app-db.json
+4. Products api should be available at: http://localhost:3000/products
+5. Customers api should be available at: http://localhost:3000/customers
+
+Running Store app
+-----------------
+1. Open another command window
+2. Change directory to "ng-2017-07-15\apps\store-app"
+3. Run command: npm install
+4. Run command: ng serve
+5. Open Chrome browser
+6. Go to url: http://localhost:4200
+
+NOTE
+----
+Currently, the app uses http communication with Products api only. 
+As a learner, you will have to study the code for Products and create  
+code to complete the Customers portion of the application.
+
+All the best!
+Thank you.

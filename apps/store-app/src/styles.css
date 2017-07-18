@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+input.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+textarea.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+.productsColor {
+    color: blue;
+}
+
+.customersColor {
+    color: green;
+}

@@ -1,0 +1,12 @@
+<p>
+  <button class="btn btn-success"
+    (click)="onAdd()">Add</button>
+</p>
+<div class="list-group">
+  <a
+    [routerLink]="['/customers', customer.id]"
+    class="list-group-item"
+    *ngFor="let customer of customers">
+    {{ customer.name }}
+  </a>
+</div>
