@@ -20,6 +20,13 @@
       "description": "Raised in a remote tribal village, Shivudu grows up a carefree young man who relentlessly pursues his heart\"s desire.",
       "isAvailable": true,
       "price": 100
+    },
+    {
+      "name": "Galaxy 8",
+      "description": "From Samsung",
+      "price": 65000,
+      "isAvailable": true,
+      "id": 4
     }
   ],
   "customers": [

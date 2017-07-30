@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+.productsColor {
+    color: blue;
+}
+
+.customersColor {
+    color: green;
+}
+
+.form-control.ng-touched.ng-invalid {
+    border-left: 5px solid red;
+}
+
+.form-control.ng-touched.ng-valid {
+    border-left: 5px solid green;
+}
+
+.form-control.ng-pending {
+    border-left: 5px solid orange;
+}
