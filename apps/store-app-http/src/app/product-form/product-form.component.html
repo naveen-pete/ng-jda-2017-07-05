@@ -1,0 +1,76 @@
+<div class="well well-lg">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div ngModelGroup="productData"
+            #group="ngModelGroup">
+            <div class="form-group">
+                <label for="productName">Name</label>
+                <input type="text" class="form-control" 
+                    id="productName"
+                    name="name"
+                    [ngModel]="product.name"
+                    required
+                    minlength="3"
+                    #name="ngModel">
+                <div class="alert alert-danger" 
+                    *ngIf="name.invalid && name.touched">
+                    <div *ngIf="name.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        Name should contain at least {{ name.errors.minlength.requiredLength }} characters.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Description</label>
+                <textarea class="form-control"
+                    id="productDescription" 
+                    cols="30" 
+                    rows="4"
+                    name="description"
+                    [ngModel]="product.description"
+                    required
+                    #description="ngModel">
+                </textarea>
+                <div class="alert alert-danger" 
+                    *ngIf="description.invalid && description.touched">
+                    Description is required.
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-warning"
+            *ngIf="group.invalid && group.touched">
+            Product data is not valid.
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Price</label>
+            <input type="text" class="form-control" 
+                id="productPrice"
+                name="price"
+                [ngModel]="product.price"
+                required
+                #price="ngModel">
+            <div class="alert alert-danger" 
+                *ngIf="price.invalid && price.touched">
+                Price is required.
+            </div>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" 
+                    id="isAvailable" 
+                    value="true"
+                    name="isAvailable"
+                    [ngModel]="product.isAvailable"> Available
+            </label>
+        </div>
+        <button name="save" type="submit"
+            [disabled]="f.invalid"
+            class="btn btn-primary">
+            Save
+        </button>
+    </form>
+</div>
+<div class="alert alert-success" *ngIf="showMessage">
+    Product saved successfully!
+</div>

@@ -1,0 +1,79 @@
+<h3 class="customersColor">Customer Form</h3>
+<h4 class="customersColor">Reactive Form</h4>
+
+<div class="well well-lg">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="customerName">Name</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="customerName"
+                name="customerName"
+                formControlName="name">
+            <div class="alert alert-info" *ngIf="form.get('name').pending">
+              Please wait. Checking the validity of Name...
+            </div>
+            <div class="alert alert-danger" *ngIf="form.get('name').invalid && form.get('name').touched">
+              <div *ngIf="form.get('name').errors.required">
+                Name is required.
+              </div>
+              <div *ngIf="form.get('name').errors.cannotContainSpace">
+                Name should not contain space character.
+              </div>
+              <div *ngIf="form.get('name').errors.shouldBeUnique">
+                Name is already in use.
+              </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="customerPhone">Phone</label>
+                <input type="text" class="form-control" 
+                    id="customerPhone"
+                    name="customerPhone"
+                    formControlName="phone">
+                <div class="alert alert-danger" *ngIf="form.get('phone').invalid && form.get('phone').touched">
+                  Phone is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="customerEmail">Email</label>
+                <input type="text" class="form-control" 
+                    id="customerEmail"
+                    name="customerEmail"
+                    formControlName="email">
+              <div class="alert alert-danger" *ngIf="form.get('email').invalid && form.get('email').touched">
+                <div *ngIf="form.get('email').errors.required">
+                  Email is required.
+                </div>
+                <div *ngIf="form.get('email').errors.email">
+                  Email is invalid.
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="customerCity">City</label>
+            <input type="text" class="form-control" 
+                id="customerCity"
+                name="customerCity"
+                formControlName="city">
+            <div class="alert alert-danger" *ngIf="form.get('city').invalid && form.get('city').touched">
+              City is required.
+            </div>
+        </div>
+        <button name="save" type="submit"
+            class="btn btn-success">
+            Save
+        </button>
+    </form>
+</div>
+<div class="alert alert-danger">
+    Customer data is invalid!
+</div>
+<div class="alert alert-success">
+    Customer saved successfully!
+</div>

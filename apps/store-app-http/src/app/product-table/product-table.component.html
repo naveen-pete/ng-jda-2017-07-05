@@ -1,0 +1,23 @@
+<h2>Products</h2>
+<div>
+    <input type="text" class="form-control" 
+        [(ngModel)]="filterName"
+        placeholder="Search by Name">
+</div>
+<hr>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Available</th>
+        </tr>
+        <tr *ngFor="let product of products | filter:filterName:'name'">
+            <td>{{product.name}}</td>
+            <td>{{product.description | shorten:50}}</td>
+            <td>{{product.price | currency:'INR':true}}</td>
+            <td>{{product.isAvailable ? 'Yes' : 'No'}}</td>
+        </tr>
+    </table>
+</div>
