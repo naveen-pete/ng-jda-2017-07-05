@@ -16,6 +16,6 @@ export class ProductTableComponent implements OnInit {
   constructor(private service: ProductsService) { }
 
   ngOnInit() {
-    this.products = this.service.getProducts();
+    //this.products = this.service.getProducts();
   }
 }

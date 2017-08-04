@@ -1,3 +1,4 @@
+import { StoreAppError } from './../errors/store-app-error';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,9 +17,19 @@ export class ProductListComponent implements OnInit {
     private productsService: ProductsService,
     private router: Router
   ) {}
-Product
+
   ngOnInit() {
-    this.products = this.productsService.getProducts();
+    //this.products = this.productsService.getProducts();
+    this.productsService.getProducts()
+      .subscribe(
+        (products: Product[]) => {
+          console.log(products);
+          this.products = products;
+        },
+        (error: StoreAppError) => {
+          console.log(error);
+        }
+      )
   }
 
   onAdd() {

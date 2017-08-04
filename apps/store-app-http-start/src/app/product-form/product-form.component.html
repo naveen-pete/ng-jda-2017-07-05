@@ -1,12 +1,24 @@
 <div class="well well-lg">
-    <form>
+    
+    <form #pf="ngForm" (ngSubmit)="onSubmit(pf)">
         <div>
             <div class="form-group">
                 <label for="productName">Name</label>
                 <input type="text" class="form-control" 
                     id="productName"
                     name="name"
-                    [(ngModel)]="product.name">
+                    [ngModel]="product.name"
+                    required
+                    minlength="3"
+                    #name="ngModel">
+                <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                    <div *ngIf="name.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        Name should have at least 3 characters.
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="productDescription">Description</label>
@@ -15,7 +27,7 @@
                     cols="30" 
                     rows="4"
                     name="description"
-                    [(ngModel)]="product.description">
+                    [ngModel]="product.description">
                 </textarea>
             </div>
         </div>
@@ -24,7 +36,7 @@
             <input type="text" class="form-control" 
                 id="productPrice"
                 name="price"
-                [(ngModel)]="product.price">
+                [ngModel]="product.price">
         </div>
         <div class="checkbox">
             <label>
@@ -32,10 +44,13 @@
                     id="isAvailable" 
                     value="true"
                     name="isAvailable"
-                    [(ngModel)]="product.isAvailable"> Available
+                    [ngModel]="product.isAvailable"> Available
             </label>
         </div>
-        <button name="save" type="button" (click)="onSave()"
+        <button 
+            [disabled]="pf.invalid"
+            name="save" 
+            type="submit" 
             class="btn btn-primary">
             Save
         </button>

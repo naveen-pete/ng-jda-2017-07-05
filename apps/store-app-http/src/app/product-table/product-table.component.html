@@ -13,9 +13,9 @@
             <th>Price</th>
             <th>Available</th>
         </tr>
-        <tr *ngFor="let product of products | filter:filterName:'name'">
+        <tr *ngFor="let product of products | filter:filterName:'description'">
             <td>{{product.name}}</td>
-            <td>{{product.description | shorten:50}}</td>
+            <td>{{product.description | shorten:10:11}}</td>
             <td>{{product.price | currency:'INR':true}}</td>
             <td>{{product.isAvailable ? 'Yes' : 'No'}}</td>
         </tr>

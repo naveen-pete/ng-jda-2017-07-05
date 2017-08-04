@@ -4,8 +4,8 @@
       "id": 1,
       "name": "Data Structures and Algorithms - upd",
       "description": "An ideal book for first course on data structures and algorithms, its text ensures a style and content relevant to present-day programming.",
-      "isAvailable": false,
-      "price": 1000
+      "isAvailable": true,
+      "price": 200
     },
     {
       "id": 2,
@@ -27,6 +27,13 @@
       "price": 65000,
       "isAvailable": true,
       "id": 4
+    },
+    {
+      "name": "iPhone 7",
+      "description": "From Apple",
+      "price": 75000,
+      "isAvailable": true,
+      "id": 5
     }
   ],
   "customers": [

@@ -65,6 +65,13 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(pf: NgForm) {
+    console.log('form:', pf);
+    console.log(pf.value);
   }
+
+  onFocus() {
+    console.log('hi');
+  }
+
 }

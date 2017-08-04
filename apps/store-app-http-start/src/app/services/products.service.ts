@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { Product } from '../models/product';
 import { LoggingService } from './logging.service';
+import { StoreAppError } from "app/errors/store-app-error";
 
 @Injectable()
 export class ProductsService {
     private products: Product[];
+    private apiUrl = 'http://localhost:3000/products123';
 
-    constructor(private loggingService: LoggingService) {
+    constructor(
+        private loggingService: LoggingService,
+        private http: Http
+    ) {
         this.products = [
             { id: 1, name: 'Data Structures and Algorithms', description: 'An ideal book for first course on data structures and algorithms, its text ensures a style and content relevant to present-day programming.', isAvailable: true, price: 285 },
             { id: 2, name: 'Premsons 608 Four Bearing Fidget Spinner', description: 'Perfect toy for fidgeters.', isAvailable: false, price: 160 },
@@ -15,10 +25,19 @@ export class ProductsService {
         ];
     }
 
-    getProducts() {
+    getProductsLocal() {
         this.loggingService.log('Returning all products.');
 
         return this.products;
+    }
+
+    getProducts() : Observable<Product[]> {
+        return this.http.get(this.apiUrl)
+            .map( (response: Response) => response.json() )
+            .catch( (error: Response) => {
+
+                return Observable.throw(new StoreAppError(error.json()));
+            });
     }
 
     getProduct(id: number) {
